@@ -14,8 +14,8 @@ import { useState } from "react";
 
 const druidspecs = [
   {
-    value: "boomkin",
-    label: "Boomkin",
+    value: "balance",
+    label: "Balance",
   },
   {
     value: "feral",

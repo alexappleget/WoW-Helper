@@ -12,67 +12,27 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../Popover/popover";
 import { useState } from "react";
 
-const wowClasses = [
+const paladinspecs = [
   {
-    value: "deathknight",
-    label: "Death Knight",
+    value: "holy",
+    label: "Holy",
   },
   {
-    value: "demonhunter",
-    label: "Demon Hunter",
+    value: "protection",
+    label: "Protection",
   },
   {
-    value: "druid",
-    label: "Druid",
-  },
-  {
-    value: "evoker",
-    label: "Evoker",
-  },
-  {
-    value: "hunter",
-    label: "Hunter",
-  },
-  {
-    value: "mage",
-    label: "Mage",
-  },
-  {
-    value: "monk",
-    label: "Monk",
-  },
-  {
-    value: "paladin",
-    label: "Paladin",
-  },
-  {
-    value: "priest",
-    label: "Priest",
-  },
-  {
-    value: "rogue",
-    label: "Rogue",
-  },
-  {
-    value: "shaman",
-    label: "Shaman",
-  },
-  {
-    value: "warlock",
-    label: "Warlock",
-  },
-  {
-    value: "warrior",
-    label: "Warrior",
+    value: "retribution",
+    label: "Retribution",
   },
 ];
 
-interface ISelectClass {
+interface ISelectSpec {
   value: string;
   onChange: (value: string) => void;
 }
 
-export function SelectClass({ value, onChange }: ISelectClass) {
+export function SelectSpecPaladin({ value, onChange }: ISelectSpec) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -85,8 +45,9 @@ export function SelectClass({ value, onChange }: ISelectClass) {
           className="w-[200px] justify-between"
         >
           {value
-            ? wowClasses.find((wowClass) => wowClass.value === value)?.label
-            : "Select your class..."}
+            ? paladinspecs.find((paladinspec) => paladinspec.value === value)
+                ?.label
+            : "Select your spec..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -94,10 +55,10 @@ export function SelectClass({ value, onChange }: ISelectClass) {
         <Command>
           <CommandList>
             <CommandGroup>
-              {wowClasses.map((wowClass) => (
+              {paladinspecs.map((paladinspec) => (
                 <CommandItem
-                  key={wowClass.value}
-                  value={wowClass.value}
+                  key={paladinspec.value}
+                  value={paladinspec.value}
                   onSelect={(currentValue) => {
                     onChange(currentValue === value ? "" : currentValue);
                     setOpen(false);
@@ -106,10 +67,10 @@ export function SelectClass({ value, onChange }: ISelectClass) {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === wowClass.value ? "opacity-100" : "opacity-0"
+                      value === paladinspec.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {wowClass.label}
+                  {paladinspec.label}
                 </CommandItem>
               ))}
             </CommandGroup>

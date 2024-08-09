@@ -12,67 +12,31 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../Popover/popover";
 import { useState } from "react";
 
-const wowClasses = [
+const monkspecs = [
   {
-    value: "deathknight",
-    label: "Death Knight",
+    value: "brewmaster",
+    label: "Brewmaster",
   },
   {
-    value: "demonhunter",
-    label: "Demon Hunter",
+    value: "fistweaver",
+    label: "Fistweaver",
   },
   {
-    value: "druid",
-    label: "Druid",
+    value: "mistweaver",
+    label: "Mistweaver",
   },
   {
-    value: "evoker",
-    label: "Evoker",
-  },
-  {
-    value: "hunter",
-    label: "Hunter",
-  },
-  {
-    value: "mage",
-    label: "Mage",
-  },
-  {
-    value: "monk",
-    label: "Monk",
-  },
-  {
-    value: "paladin",
-    label: "Paladin",
-  },
-  {
-    value: "priest",
-    label: "Priest",
-  },
-  {
-    value: "rogue",
-    label: "Rogue",
-  },
-  {
-    value: "shaman",
-    label: "Shaman",
-  },
-  {
-    value: "warlock",
-    label: "Warlock",
-  },
-  {
-    value: "warrior",
-    label: "Warrior",
+    value: "windwalker",
+    label: "Windwalker",
   },
 ];
 
-interface ISelectClass {
+interface ISelectSpec {
   value: string;
   onChange: (value: string) => void;
 }
 
-export function SelectClass({ value, onChange }: ISelectClass) {
+export function SelectSpecMonk({ value, onChange }: ISelectSpec) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -85,8 +49,8 @@ export function SelectClass({ value, onChange }: ISelectClass) {
           className="w-[200px] justify-between"
         >
           {value
-            ? wowClasses.find((wowClass) => wowClass.value === value)?.label
-            : "Select your class..."}
+            ? monkspecs.find((monkspec) => monkspec.value === value)?.label
+            : "Select your spec..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -94,10 +58,10 @@ export function SelectClass({ value, onChange }: ISelectClass) {
         <Command>
           <CommandList>
             <CommandGroup>
-              {wowClasses.map((wowClass) => (
+              {monkspecs.map((monkspec) => (
                 <CommandItem
-                  key={wowClass.value}
-                  value={wowClass.value}
+                  key={monkspec.value}
+                  value={monkspec.value}
                   onSelect={(currentValue) => {
                     onChange(currentValue === value ? "" : currentValue);
                     setOpen(false);
@@ -106,10 +70,10 @@ export function SelectClass({ value, onChange }: ISelectClass) {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === wowClass.value ? "opacity-100" : "opacity-0"
+                      value === monkspec.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {wowClass.label}
+                  {monkspec.label}
                 </CommandItem>
               ))}
             </CommandGroup>
