@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-10 p-24">
-      <h1 className="text-xl font-bold">Welcome to WoW Companion</h1>
+      <h1 className="text-xl font-bold">Welcome to Name Coming Soon</h1>
       <SelectClass value={selectedClass} onChange={setSelectedClass} />
       {selectedClass && (
         <>
